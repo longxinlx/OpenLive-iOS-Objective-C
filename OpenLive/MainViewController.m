@@ -43,10 +43,10 @@
 - (void)showRoleSelection {
     UIAlertController *sheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *broadcaster = [UIAlertAction actionWithTitle:@"Broadcaster" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self joinWithRole:AgoraRtc_ClientRole_Dual_Stream_Broadcaster];
+        [self joinWithRole:AgoraRtc_ClientRole_Broadcaster];
     }];
     UIAlertAction *audience = [UIAlertAction actionWithTitle:@"Audience" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self joinWithRole:AgoraRtc_ClientRole_Dual_Stream_Audience];
+        [self joinWithRole:AgoraRtc_ClientRole_Audience];
     }];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil];
     [sheet addAction:broadcaster];

@@ -30,7 +30,7 @@
 
 @implementation LiveRoomViewController
 - (BOOL)isBroadcaster {
-    return self.clientRole == AgoraRtc_ClientRole_Dual_Stream_Broadcaster;
+    return self.clientRole == AgoraRtc_ClientRole_Broadcaster;
 }
 
 - (VideoViewLayouter *)viewLayouter {
@@ -85,9 +85,9 @@
 
 - (IBAction)doBroadcastPressed:(UIButton *)sender {
     if (self.isBroadcaster) {
-        self.clientRole = AgoraRtc_ClientRole_Dual_Stream_Audience;
+        self.clientRole = AgoraRtc_ClientRole_Audience;
     } else {
-        self.clientRole = AgoraRtc_ClientRole_Dual_Stream_Broadcaster;
+        self.clientRole = AgoraRtc_ClientRole_Broadcaster;
     }
     
     [self.rtcEngine setClientRole:self.clientRole];
@@ -216,9 +216,11 @@
 
 //MARK: - Agora Media SDK
 - (void)loadAgoraKit {
-    self.rtcEngine = [AgoraRtcEngineKit sharedEngineWithVendorKey:[KeyCenter AppId] applicationCategory:AgoraRtc_ApplicationCategory_LiveBroadcasting delegate:self];
+    self.rtcEngine = [AgoraRtcEngineKit sharedEngineWithAppId:[KeyCenter AppId] delegate:self];
+    [self.rtcEngine setChannelProfile:AgoraRtc_ChannelProfile_LiveBroadcasting];
+    [self.rtcEngine enableDualStreamMode:YES];
     [self.rtcEngine enableVideo];
-    [self.rtcEngine setVideoProfile:self.videoProfile];
+    [self.rtcEngine setVideoProfile:self.videoProfile swapWidthAndHeight:NO];
     [self.rtcEngine setClientRole:self.clientRole];
     
     if (self.isBroadcaster) {
