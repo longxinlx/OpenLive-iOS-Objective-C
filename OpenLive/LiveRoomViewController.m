@@ -90,7 +90,7 @@
         self.clientRole = AgoraRtc_ClientRole_Broadcaster;
     }
     
-    [self.rtcEngine setClientRole:self.clientRole];
+    [self.rtcEngine setClientRole:self.clientRole withKey:nil];
     [self updateInterfaceWithAnimation:YES];
 }
 
@@ -221,7 +221,7 @@
     [self.rtcEngine enableDualStreamMode:YES];
     [self.rtcEngine enableVideo];
     [self.rtcEngine setVideoProfile:self.videoProfile swapWidthAndHeight:NO];
-    [self.rtcEngine setClientRole:self.clientRole];
+    [self.rtcEngine setClientRole:self.clientRole withKey:nil];
     
     if (self.isBroadcaster) {
         [self.rtcEngine startPreview];
