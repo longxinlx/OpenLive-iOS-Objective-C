@@ -193,6 +193,11 @@
 					07D24CF21D866704002C69BF = {
 						CreatedOnToolsVersion = 8.0;
 						ProvisioningStyle = Manual;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
