@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		076ED90A1DB47D3F005A85D6 /* videoprp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 076ED9091DB47D3F005A85D6 /* videoprp.framework */; };
 		07D24CF81D866704002C69BF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D24CF71D866704002C69BF /* main.m */; };
 		07D24CFB1D866704002C69BF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D24CFA1D866704002C69BF /* AppDelegate.m */; };
 		07D24D011D866704002C69BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07D24CFF1D866704002C69BF /* Main.storyboard */; };
 		07D24D031D866704002C69BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07D24D021D866704002C69BF /* Assets.xcassets */; };
 		07D24D061D866704002C69BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07D24D041D866704002C69BF /* LaunchScreen.storyboard */; };
 		07D24D111D8667B0002C69BF /* AgoraRtcEngineKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D24D0F1D8667B0002C69BF /* AgoraRtcEngineKit.framework */; };
-		07D24D121D8667B0002C69BF /* videoprp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D24D101D8667B0002C69BF /* videoprp.framework */; };
 		07D24D151D8667DC002C69BF /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D24D141D8667DC002C69BF /* AVFoundation.framework */; };
 		07D24D171D8667E7002C69BF /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D24D161D8667E7002C69BF /* VideoToolbox.framework */; };
 		07D24D191D8667EC002C69BF /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D24D181D8667EC002C69BF /* libc++.tbd */; };
@@ -31,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		076ED9091DB47D3F005A85D6 /* videoprp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = videoprp.framework; sourceTree = "<group>"; };
 		07D24CF31D866704002C69BF /* OpenLive.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OpenLive.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07D24CF71D866704002C69BF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		07D24CF91D866704002C69BF /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -40,7 +41,6 @@
 		07D24D051D866704002C69BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		07D24D071D866704002C69BF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07D24D0F1D8667B0002C69BF /* AgoraRtcEngineKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AgoraRtcEngineKit.framework; sourceTree = "<group>"; };
-		07D24D101D8667B0002C69BF /* videoprp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = videoprp.framework; sourceTree = "<group>"; };
 		07D24D141D8667DC002C69BF /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		07D24D161D8667E7002C69BF /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
 		07D24D181D8667EC002C69BF /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
@@ -75,9 +75,9 @@
 				07D24D1B1D8667F5002C69BF /* AudioToolbox.framework in Frameworks */,
 				07D24D191D8667EC002C69BF /* libc++.tbd in Frameworks */,
 				07D24D171D8667E7002C69BF /* VideoToolbox.framework in Frameworks */,
+				076ED90A1DB47D3F005A85D6 /* videoprp.framework in Frameworks */,
 				07D24D151D8667DC002C69BF /* AVFoundation.framework in Frameworks */,
 				07D24D111D8667B0002C69BF /* AgoraRtcEngineKit.framework in Frameworks */,
-				07D24D121D8667B0002C69BF /* videoprp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +119,7 @@
 				07D24D2D1D867644002C69BF /* VideoViewLayouter.m */,
 				07D24D281D867644002C69BF /* ProfileCell.h */,
 				07D24D291D867644002C69BF /* ProfileCell.m */,
+				076ED9091DB47D3F005A85D6 /* videoprp.framework */,
 				07D24D0E1D8667B0002C69BF /* libs */,
 				07D24CF61D866704002C69BF /* Supporting Files */,
 			);
@@ -142,7 +143,6 @@
 			isa = PBXGroup;
 			children = (
 				07D24D0F1D8667B0002C69BF /* AgoraRtcEngineKit.framework */,
-				07D24D101D8667B0002C69BF /* videoprp.framework */,
 			);
 			path = libs;
 			sourceTree = "<group>";
@@ -192,7 +192,7 @@
 				TargetAttributes = {
 					07D24CF21D866704002C69BF = {
 						CreatedOnToolsVersion = 8.0;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -365,14 +365,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OpenLive/libs",
+					"$(PROJECT_DIR)/OpenLive",
 				);
 				INFOPLIST_FILE = OpenLive/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.agora.OpenLive;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -384,14 +386,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/OpenLive/libs",
+					"$(PROJECT_DIR)/OpenLive",
 				);
 				INFOPLIST_FILE = OpenLive/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = io.agora.OpenLive;
 				PRODUCT_NAME = "$(TARGET_NAME)";

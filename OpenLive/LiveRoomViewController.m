@@ -240,6 +240,8 @@
     
     if (self.isBroadcaster) {
         self.agoraEnhancer = [[AgoraYuvEnhancerObjc alloc] init];
+        self.agoraEnhancer.lighteningFactor = 0.7;
+        self.agoraEnhancer.smoothness = 0.5;
         [self.agoraEnhancer turnOn];
     }
 }
