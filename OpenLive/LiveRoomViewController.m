@@ -220,7 +220,7 @@
     [self.rtcEngine setChannelProfile:AgoraRtc_ChannelProfile_LiveBroadcasting];
     [self.rtcEngine enableDualStreamMode:YES];
     [self.rtcEngine enableVideo];
-    [self.rtcEngine setVideoProfile:self.videoProfile swapWidthAndHeight:NO];
+    [self.rtcEngine setVideoProfile:self.videoProfile swapWidthAndHeight:YES];
     [self.rtcEngine setClientRole:self.clientRole withKey:nil];
     
     if (self.isBroadcaster) {
