@@ -18,11 +18,13 @@
 @property (weak, nonatomic) IBOutlet UIButton *broadcastButton;
 @property (strong, nonatomic) IBOutletCollection(UIButton) NSArray *sessionButtons;
 @property (weak, nonatomic) IBOutlet UIButton *audioMuteButton;
+@property (weak, nonatomic) IBOutlet UIButton *enhancerButton;
 
 @property (strong, nonatomic) AgoraRtcEngineKit *rtcEngine;
 @property (strong, nonatomic) AgoraYuvEnhancerObjc *agoraEnhancer;
 @property (assign, nonatomic) BOOL isBroadcaster;
 @property (assign, nonatomic) BOOL isMuted;
+@property (assign, nonatomic) BOOL shouldEnhancer;
 @property (strong, nonatomic) NSMutableArray<VideoSession *> *videoSessions;
 @property (strong, nonatomic) VideoSession *fullSession;
 @property (strong, nonatomic) VideoViewLayouter *viewLayouter;
@@ -40,15 +42,38 @@
     return _viewLayouter;
 }
 
+- (AgoraYuvEnhancerObjc *)agoraEnhancer {
+    if (!_agoraEnhancer) {
+        _agoraEnhancer = [[AgoraYuvEnhancerObjc alloc] init];
+        _agoraEnhancer.lighteningFactor = 0.7;
+        _agoraEnhancer.smoothness = 0.7;
+    }
+    return _agoraEnhancer;
+}
+
 - (void)setClientRole:(AgoraRtcClientRole)clientRole {
     _clientRole = clientRole;
+    
+    if (self.isBroadcaster) {
+        self.shouldEnhancer = YES;
+    }
     [self updateButtonsVisiablity];
 }
 
 - (void)setIsMuted:(BOOL)isMuted {
     _isMuted = isMuted;
     [self.rtcEngine muteLocalAudioStream:isMuted];
-    [self.audioMuteButton setImage:[UIImage imageNamed:(self.isMuted ? @"btn_mute_cancel" : @"btn_mute")] forState:UIControlStateNormal];
+    [self.audioMuteButton setImage:[UIImage imageNamed:(isMuted ? @"btn_mute_cancel" : @"btn_mute")] forState:UIControlStateNormal];
+}
+
+- (void)setShouldEnhancer:(BOOL)shouldEnhancer {
+    _shouldEnhancer = shouldEnhancer;
+    if (shouldEnhancer) {
+        [self.agoraEnhancer turnOn];
+    } else {
+        [self.agoraEnhancer turnOff];
+    }
+    [self.enhancerButton setImage:[UIImage imageNamed:(shouldEnhancer ? @"btn_beautiful_cancel" : @"btn_beautiful")] forState:UIControlStateNormal];
 }
 
 - (void)setVideoSessions:(NSMutableArray<VideoSession *> *)videoSessions {
@@ -83,9 +108,16 @@
     self.isMuted = !self.isMuted;
 }
 
+- (IBAction)doEnhancerPressed:(UIButton *)sender {
+    self.shouldEnhancer = !self.shouldEnhancer;
+}
+
 - (IBAction)doBroadcastPressed:(UIButton *)sender {
     if (self.isBroadcaster) {
         self.clientRole = AgoraRtc_ClientRole_Audience;
+        if (self.fullSession.uid == 0) {
+            self.fullSession = nil;
+        }
     } else {
         self.clientRole = AgoraRtc_ClientRole_Broadcaster;
     }
@@ -239,10 +271,7 @@
     }
     
     if (self.isBroadcaster) {
-        self.agoraEnhancer = [[AgoraYuvEnhancerObjc alloc] init];
-        self.agoraEnhancer.lighteningFactor = 0.7;
-        self.agoraEnhancer.smoothness = 0.5;
-        [self.agoraEnhancer turnOn];
+        self.shouldEnhancer = YES;
     }
 }
 
