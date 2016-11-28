@@ -41,12 +41,12 @@
 
 - (NSString *)bitRateOfProfile:(AgoraRtcVideoProfile)profile {
     switch (profile) {
-        case AgoraRtc_VideoProfile_120P: return @"80"; break;
-        case AgoraRtc_VideoProfile_180P: return @"160"; break;
+        case AgoraRtc_VideoProfile_120P: return @"65"; break;
+        case AgoraRtc_VideoProfile_180P: return @"140"; break;
         case AgoraRtc_VideoProfile_240P: return @"200"; break;
         case AgoraRtc_VideoProfile_360P: return @"400"; break;
         case AgoraRtc_VideoProfile_480P: return @"500"; break;
-        case AgoraRtc_VideoProfile_720P: return @"1000"; break;
+        case AgoraRtc_VideoProfile_720P: return @"1130"; break;
         default: return @""; break;
     }
 }
