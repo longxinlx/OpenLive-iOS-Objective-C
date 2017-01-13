@@ -28,7 +28,18 @@
 		07D24D341D867644002C69BF /* SettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D24D2B1D867644002C69BF /* SettingsViewController.m */; };
 		07D24D351D867644002C69BF /* VideoViewLayouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D24D2D1D867644002C69BF /* VideoViewLayouter.m */; };
 		07D24D361D867644002C69BF /* VideoSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 07D24D2F1D867644002C69BF /* VideoSession.m */; };
+		07F5318F1E288883009BFE58 /* OpenLiveUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F5318E1E288883009BFE58 /* OpenLiveUITests.m */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		07F531911E288883009BFE58 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 07D24CEB1D866704002C69BF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 07D24CF21D866704002C69BF;
+			remoteInfo = OpenLive;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		076ED9091DB47D3F005A85D6 /* videoprp.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = videoprp.framework; sourceTree = "<group>"; };
@@ -62,6 +73,9 @@
 		07D24D2D1D867644002C69BF /* VideoViewLayouter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoViewLayouter.m; sourceTree = "<group>"; };
 		07D24D2E1D867644002C69BF /* VideoSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoSession.h; sourceTree = "<group>"; };
 		07D24D2F1D867644002C69BF /* VideoSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VideoSession.m; sourceTree = "<group>"; };
+		07F5318C1E288883009BFE58 /* OpenLiveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenLiveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		07F5318E1E288883009BFE58 /* OpenLiveUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenLiveUITests.m; sourceTree = "<group>"; };
+		07F531901E288883009BFE58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +95,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		07F531891E288883009BFE58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -88,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				07D24CF51D866704002C69BF /* OpenLive */,
+				07F5318D1E288883009BFE58 /* OpenLiveUITests */,
 				07D24CF41D866704002C69BF /* Products */,
 				07D24D131D8667DC002C69BF /* Frameworks */,
 			);
@@ -97,6 +119,7 @@
 			isa = PBXGroup;
 			children = (
 				07D24CF31D866704002C69BF /* OpenLive.app */,
+				07F5318C1E288883009BFE58 /* OpenLiveUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -161,6 +184,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		07F5318D1E288883009BFE58 /* OpenLiveUITests */ = {
+			isa = PBXGroup;
+			children = (
+				07F5318E1E288883009BFE58 /* OpenLiveUITests.m */,
+				07F531901E288883009BFE58 /* Info.plist */,
+			);
+			path = OpenLiveUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -181,6 +213,24 @@
 			productReference = 07D24CF31D866704002C69BF /* OpenLive.app */;
 			productType = "com.apple.product-type.application";
 		};
+		07F5318B1E288883009BFE58 /* OpenLiveUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07F531951E288883009BFE58 /* Build configuration list for PBXNativeTarget "OpenLiveUITests" */;
+			buildPhases = (
+				07F531881E288883009BFE58 /* Sources */,
+				07F531891E288883009BFE58 /* Frameworks */,
+				07F5318A1E288883009BFE58 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				07F531921E288883009BFE58 /* PBXTargetDependency */,
+			);
+			name = OpenLiveUITests;
+			productName = OpenLiveUITests;
+			productReference = 07F5318C1E288883009BFE58 /* OpenLiveUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -199,6 +249,11 @@
 							};
 						};
 					};
+					07F5318B1E288883009BFE58 = {
+						CreatedOnToolsVersion = 8.2.1;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 07D24CF21D866704002C69BF;
+					};
 				};
 			};
 			buildConfigurationList = 07D24CEE1D866704002C69BF /* Build configuration list for PBXProject "OpenLive" */;
@@ -215,6 +270,7 @@
 			projectRoot = "";
 			targets = (
 				07D24CF21D866704002C69BF /* OpenLive */,
+				07F5318B1E288883009BFE58 /* OpenLiveUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -227,6 +283,13 @@
 				07D24D061D866704002C69BF /* LaunchScreen.storyboard in Resources */,
 				07D24D031D866704002C69BF /* Assets.xcassets in Resources */,
 				07D24D011D866704002C69BF /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		07F5318A1E288883009BFE58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +312,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		07F531881E288883009BFE58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07F5318F1E288883009BFE58 /* OpenLiveUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		07F531921E288883009BFE58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 07D24CF21D866704002C69BF /* OpenLive */;
+			targetProxy = 07F531911E288883009BFE58 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		07D24CFF1D866704002C69BF /* Main.storyboard */ = {
@@ -403,6 +482,34 @@
 			};
 			name = Release;
 		};
+		07F531931E288883009BFE58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = OpenLiveUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.agora.OpenLiveUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = OpenLive;
+			};
+			name = Debug;
+		};
+		07F531941E288883009BFE58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				DEVELOPMENT_TEAM = "";
+				INFOPLIST_FILE = OpenLiveUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = io.agora.OpenLiveUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = OpenLive;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -423,6 +530,14 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		07F531951E288883009BFE58 /* Build configuration list for PBXNativeTarget "OpenLiveUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07F531931E288883009BFE58 /* Debug */,
+				07F531941E288883009BFE58 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
