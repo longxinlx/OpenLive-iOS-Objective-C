@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fw8-pa-jb1">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="fw8-pa-jb1">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -130,7 +130,7 @@
                                         <rect key="frame" x="0.0" y="28" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="91l-Wh-pQO" id="4mZ-i1-qcf">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVh-H3-aip">
@@ -341,17 +341,6 @@
                                     <action selector="doMutePressed:" destination="qWj-In-lid" eventType="touchUpInside" id="Gua-49-jrQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HuF-bD-shk">
-                                <rect key="frame" x="321" y="613" width="54" height="54"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="54" id="8di-0e-ONE"/>
-                                    <constraint firstAttribute="height" constant="54" id="x2g-z1-z0d"/>
-                                </constraints>
-                                <state key="normal" image="btn_beautiful_cancel"/>
-                                <connections>
-                                    <action selector="doEnhancerPressed:" destination="qWj-In-lid" eventType="touchUpInside" id="38D-M4-9LA"/>
-                                </connections>
-                            </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d3E-Zo-xPw">
                                 <rect key="frame" x="163" y="20" width="50" height="54"/>
                                 <constraints>
@@ -372,11 +361,9 @@
                             <constraint firstAttribute="trailing" secondItem="YN0-2t-uyK" secondAttribute="trailing" id="CeZ-qq-Xir"/>
                             <constraint firstItem="J4e-dK-cjH" firstAttribute="leading" secondItem="sjo-ok-mpy" secondAttribute="leading" id="GJo-iA-aEB"/>
                             <constraint firstItem="d3E-Zo-xPw" firstAttribute="top" secondItem="sjo-ok-mpy" secondAttribute="top" constant="20" id="OER-Pw-CyQ"/>
-                            <constraint firstAttribute="trailing" secondItem="HuF-bD-shk" secondAttribute="trailing" id="WdS-3h-au4"/>
                             <constraint firstAttribute="bottom" secondItem="J4e-dK-cjH" secondAttribute="bottom" id="YbN-8Z-hMm"/>
                             <constraint firstItem="XhD-KC-cch" firstAttribute="leading" secondItem="sjo-ok-mpy" secondAttribute="leading" id="Yyz-4u-TJ8"/>
                             <constraint firstItem="YN0-2t-uyK" firstAttribute="top" secondItem="sjo-ok-mpy" secondAttribute="top" constant="20" id="ZZn-Pi-uK2"/>
-                            <constraint firstAttribute="bottom" secondItem="HuF-bD-shk" secondAttribute="bottom" id="hiP-3a-vdY"/>
                             <constraint firstAttribute="bottom" secondItem="8lg-k4-KPd" secondAttribute="bottom" id="kX0-sC-u30"/>
                             <constraint firstAttribute="bottom" secondItem="XhD-KC-cch" secondAttribute="bottom" id="mNq-VL-JiF"/>
                             <constraint firstItem="J4e-dK-cjH" firstAttribute="top" secondItem="sjo-ok-mpy" secondAttribute="top" id="rYu-fF-DF6"/>
@@ -387,12 +374,10 @@
                     <connections>
                         <outlet property="audioMuteButton" destination="8lg-k4-KPd" id="ORc-7R-XiL"/>
                         <outlet property="broadcastButton" destination="XhD-KC-cch" id="UNE-69-r9a"/>
-                        <outlet property="enhancerButton" destination="HuF-bD-shk" id="krU-mU-EWf"/>
                         <outlet property="remoteContainerView" destination="J4e-dK-cjH" id="xuZ-TM-UxX"/>
                         <outlet property="roomNameLabel" destination="d3E-Zo-xPw" id="BOX-PT-tcn"/>
                         <outletCollection property="sessionButtons" destination="8lg-k4-KPd" id="MrW-se-iKR"/>
                         <outletCollection property="sessionButtons" destination="qA7-at-4Qa" id="RHP-C1-NX7"/>
-                        <outletCollection property="sessionButtons" destination="HuF-bD-shk" id="QOG-gw-QPj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n4n-qY-2pR" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -425,7 +410,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="btn_beautiful_cancel" width="40" height="40"/>
         <image name="btn_close" width="30" height="30"/>
         <image name="btn_join" width="40" height="40"/>
         <image name="btn_mute" width="40" height="40"/>

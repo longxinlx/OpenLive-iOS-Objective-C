@@ -1,4 +1,4 @@
-# OpenLive_iOS_OC
+# OpenLive iOS OC
 
 Agora OpenLive is a demo of [Agora.io](http://www.agora.io) Interactive Broadcasting - iOS
 
@@ -59,7 +59,7 @@ This demo does not include broadcasting business server. Developers can build yo
 
 ## Bug reports
 
-* https://github.com/AgoraLab/OpenLive_iOS_OC/issues
+* https://github.com/AgoraIO/OpenLive-iOS-Objective-C/issues
 
 
 ## Build Instructions
@@ -72,9 +72,7 @@ NOTICE: before building, you need to
 	you can get your vendor key at https://dashboard.agora.io
 
 
-2. update AgoraRtcEngineKit.framework at OpenLive/libs
-
-3. update videoprp.framework at OpenLive
+2. update AgoraRtcEngineKit.framework at OpenLive
 
 
 Enjoy video broadcasting!

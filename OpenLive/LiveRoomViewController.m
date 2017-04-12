@@ -7,7 +7,6 @@
 //
 
 #import "LiveRoomViewController.h"
-#import <videoprp/AgoraYuvEnhancerObjc.h>
 #import "VideoSession.h"
 #import "VideoViewLayouter.h"
 #import "KeyCenter.h"
@@ -21,7 +20,6 @@
 @property (weak, nonatomic) IBOutlet UIButton *enhancerButton;
 
 @property (strong, nonatomic) AgoraRtcEngineKit *rtcEngine;
-@property (strong, nonatomic) AgoraYuvEnhancerObjc *agoraEnhancer;
 @property (assign, nonatomic) BOOL isBroadcaster;
 @property (assign, nonatomic) BOOL isMuted;
 @property (assign, nonatomic) BOOL shouldEnhancer;
@@ -42,15 +40,6 @@
     return _viewLayouter;
 }
 
-- (AgoraYuvEnhancerObjc *)agoraEnhancer {
-    if (!_agoraEnhancer) {
-        _agoraEnhancer = [[AgoraYuvEnhancerObjc alloc] init];
-        _agoraEnhancer.lighteningFactor = 0.7;
-        _agoraEnhancer.smoothness = 0.7;
-    }
-    return _agoraEnhancer;
-}
-
 - (void)setClientRole:(AgoraRtcClientRole)clientRole {
     _clientRole = clientRole;
     
@@ -64,16 +53,6 @@
     _isMuted = isMuted;
     [self.rtcEngine muteLocalAudioStream:isMuted];
     [self.audioMuteButton setImage:[UIImage imageNamed:(isMuted ? @"btn_mute_cancel" : @"btn_mute")] forState:UIControlStateNormal];
-}
-
-- (void)setShouldEnhancer:(BOOL)shouldEnhancer {
-    _shouldEnhancer = shouldEnhancer;
-    if (shouldEnhancer) {
-        [self.agoraEnhancer turnOn];
-    } else {
-        [self.agoraEnhancer turnOff];
-    }
-    [self.enhancerButton setImage:[UIImage imageNamed:(shouldEnhancer ? @"btn_beautiful_cancel" : @"btn_beautiful")] forState:UIControlStateNormal];
 }
 
 - (void)setVideoSessions:(NSMutableArray<VideoSession *> *)videoSessions {
@@ -106,10 +85,6 @@
 
 - (IBAction)doMutePressed:(UIButton *)sender {
     self.isMuted = !self.isMuted;
-}
-
-- (IBAction)doEnhancerPressed:(UIButton *)sender {
-    self.shouldEnhancer = !self.shouldEnhancer;
 }
 
 - (IBAction)doBroadcastPressed:(UIButton *)sender {
@@ -161,8 +136,6 @@
         [session.hostingView removeFromSuperview];
     }
     [self.videoSessions removeAllObjects];
-    
-    [self.agoraEnhancer turnOff];
     
     if ([self.delegate respondsToSelector:@selector(liveVCNeedClose:)]) {
         [self.delegate liveVCNeedClose:self];
