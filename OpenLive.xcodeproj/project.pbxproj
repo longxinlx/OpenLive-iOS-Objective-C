@@ -29,6 +29,7 @@
 		07D29C3A1E9E187D00C3583C /* AgoraRtcEngineKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D29C391E9E187D00C3583C /* AgoraRtcEngineKit.framework */; };
 		07D29C3C1E9E192A00C3583C /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 07D29C3B1E9E192A00C3583C /* libresolv.tbd */; };
 		07F5318F1E288883009BFE58 /* OpenLiveUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 07F5318E1E288883009BFE58 /* OpenLiveUITests.m */; };
+		704E32D31FEB50A10027B6DB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 704E32D21FEB50A10027B6DB /* SystemConfiguration.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		07F5318C1E288883009BFE58 /* OpenLiveUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OpenLiveUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		07F5318E1E288883009BFE58 /* OpenLiveUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenLiveUITests.m; sourceTree = "<group>"; };
 		07F531901E288883009BFE58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		704E32D21FEB50A10027B6DB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				704E32D31FEB50A10027B6DB /* SystemConfiguration.framework in Frameworks */,
 				07D29C3C1E9E192A00C3583C /* libresolv.tbd in Frameworks */,
 				07D29C3A1E9E187D00C3583C /* AgoraRtcEngineKit.framework in Frameworks */,
 				07D24D211D866809002C69BF /* CoreTelephony.framework in Frameworks */,
@@ -164,6 +167,7 @@
 		07D24D131D8667DC002C69BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				704E32D21FEB50A10027B6DB /* SystemConfiguration.framework */,
 				07D29C3B1E9E192A00C3583C /* libresolv.tbd */,
 				07D24D201D866809002C69BF /* CoreTelephony.framework */,
 				07D24D1E1D866802002C69BF /* CoreMedia.framework */,
