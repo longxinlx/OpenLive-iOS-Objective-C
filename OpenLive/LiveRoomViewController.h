@@ -16,7 +16,7 @@
 
 @interface LiveRoomViewController : UIViewController
 @property (copy, nonatomic) NSString *roomName;
-@property (assign, nonatomic) AgoraRtcClientRole clientRole;
-@property (assign, nonatomic) AgoraRtcVideoProfile videoProfile;
+@property (assign, nonatomic) AgoraClientRole clientRole;
+@property (assign, nonatomic) AgoraVideoProfile videoProfile;
 @property (weak, nonatomic) id<LiveRoomVCDelegate> delegate;
 @end

@@ -14,14 +14,14 @@
 @property (weak, nonatomic) IBOutlet UITextField *roomNameTextField;
 @property (weak, nonatomic) IBOutlet UIView *popoverSourceView;
 
-@property (assign, nonatomic) AgoraRtcVideoProfile videoProfile;
+@property (assign, nonatomic) AgoraVideoProfile videoProfile;
 @end
 
 @implementation MainViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.videoProfile = AgoraRtc_VideoProfile_480P;
+    self.videoProfile = AgoraVideoProfileLandscape480P;
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -43,10 +43,10 @@
 - (void)showRoleSelection {
     UIAlertController *sheet = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     UIAlertAction *broadcaster = [UIAlertAction actionWithTitle:@"Broadcaster" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self joinWithRole:AgoraRtc_ClientRole_Broadcaster];
+        [self joinWithRole:AgoraClientRoleBroadcaster];
     }];
     UIAlertAction *audience = [UIAlertAction actionWithTitle:@"Audience" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-        [self joinWithRole:AgoraRtc_ClientRole_Audience];
+        [self joinWithRole:AgoraClientRoleAudience];
     }];
     UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"Cancel" style:UIAlertActionStyleDefault handler:nil];
     [sheet addAction:broadcaster];
@@ -57,11 +57,11 @@
     [self presentViewController:sheet animated:YES completion:nil];
 }
 
-- (void)joinWithRole:(AgoraRtcClientRole)role {
+- (void)joinWithRole:(AgoraClientRole)role {
     [self performSegueWithIdentifier:@"mainToLive" sender:@(role)];
 }
 
-- (void)settingsVC:(SettingsViewController *)settingsVC didSelectProfile:(AgoraRtcVideoProfile)profile {
+- (void)settingsVC:(SettingsViewController *)settingsVC didSelectProfile:(AgoraVideoProfile)profile {
     self.videoProfile = profile;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
