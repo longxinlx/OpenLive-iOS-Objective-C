@@ -1,6 +1,6 @@
 # Open Live iOS for Objective-C
 
-*其他语言版本： [简体中文](README.md)*
+*其他语言版本： [简体中文](README.zh.md)*
 
 The Open Live iOS for Objective-C Sample App is an open-source demo that will help you get live video chat integrated directly into your iOS applications using the Agora Video SDK.
 
