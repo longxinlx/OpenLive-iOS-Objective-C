@@ -30,7 +30,7 @@
 
 @implementation LiveRoomViewController
 - (BOOL)isBroadcaster {
-    return self.clientRole == AgoraRtc_ClientRole_Broadcaster;
+    return self.clientRole == AgoraClientRoleBroadcaster;
 }
 
 - (VideoViewLayouter *)viewLayouter {
@@ -40,7 +40,7 @@
     return _viewLayouter;
 }
 
-- (void)setClientRole:(AgoraRtcClientRole)clientRole {
+- (void)setClientRole:(AgoraClientRole)clientRole {
     _clientRole = clientRole;
     
     if (self.isBroadcaster) {
@@ -89,15 +89,15 @@
 
 - (IBAction)doBroadcastPressed:(UIButton *)sender {
     if (self.isBroadcaster) {
-        self.clientRole = AgoraRtc_ClientRole_Audience;
+        self.clientRole = AgoraClientRoleAudience;
         if (self.fullSession.uid == 0) {
             self.fullSession = nil;
         }
     } else {
-        self.clientRole = AgoraRtc_ClientRole_Broadcaster;
+        self.clientRole = AgoraClientRoleBroadcaster;
     }
     
-    [self.rtcEngine setClientRole:self.clientRole withKey:nil];
+    [self.rtcEngine setClientRole:self.clientRole];
     [self updateInterfaceWithAnimation:YES];
 }
 
@@ -182,11 +182,11 @@
 - (void)setStreamTypeForSessions:(NSArray<VideoSession *> *)sessions fullSession:(VideoSession *)fullSession {
     if (fullSession) {
         for (VideoSession *session in sessions) {
-            [self.rtcEngine setRemoteVideoStream:session.uid type:(session == self.fullSession ? AgoraRtc_VideoStream_High : AgoraRtc_VideoStream_Low)];
+            [self.rtcEngine setRemoteVideoStream:session.uid type:(session == self.fullSession ? AgoraVideoStreamTypeHigh : AgoraVideoStreamTypeLow)];
         }
     } else {
         for (VideoSession *session in sessions) {
-            [self.rtcEngine setRemoteVideoStream:session.uid type:AgoraRtc_VideoStream_High];
+            [self.rtcEngine setRemoteVideoStream:session.uid type:AgoraVideoStreamTypeHigh];
         }
     }
 }
@@ -222,11 +222,11 @@
 //MARK: - Agora Media SDK
 - (void)loadAgoraKit {
     self.rtcEngine = [AgoraRtcEngineKit sharedEngineWithAppId:[KeyCenter AppId] delegate:self];
-    [self.rtcEngine setChannelProfile:AgoraRtc_ChannelProfile_LiveBroadcasting];
+    [self.rtcEngine setChannelProfile:AgoraChannelProfileLiveBroadcasting];
     [self.rtcEngine enableDualStreamMode:YES];
     [self.rtcEngine enableVideo];
     [self.rtcEngine setVideoProfile:self.videoProfile swapWidthAndHeight:YES];
-    [self.rtcEngine setClientRole:self.clientRole withKey:nil];
+    [self.rtcEngine setClientRole:self.clientRole];
     
     if (self.isBroadcaster) {
         [self.rtcEngine startPreview];
@@ -234,7 +234,7 @@
     
     [self addLocalSession];
     
-    int code = [self.rtcEngine joinChannelByKey:nil channelName:self.roomName info:nil uid:0 joinSuccess:nil];
+    int code = [self.rtcEngine joinChannelByToken:nil channelId:self.roomName info:nil uid:0 joinSuccess:nil];
     if (code == 0) {
         [self setIdleTimerActive:NO];
     } else {
@@ -259,7 +259,7 @@
     }
 }
 
-- (void)rtcEngine:(AgoraRtcEngineKit *)engine didOfflineOfUid:(NSUInteger)uid reason:(AgoraRtcUserOfflineReason)reason {
+- (void)rtcEngine:(AgoraRtcEngineKit *)engine didOfflineOfUid:(NSUInteger)uid reason:(AgoraUserOfflineReason)reason {
     VideoSession *deleteSession;
     for (VideoSession *session in self.videoSessions) {
         if (session.uid == uid) {
