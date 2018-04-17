@@ -11,7 +11,12 @@
 #import "VideoViewLayouter.h"
 #import "KeyCenter.h"
 
-@interface LiveRoomViewController () <AgoraRtcEngineDelegate>
+#define PublishWidth 1280
+#define PublishHeight 720
+
+@interface LiveRoomViewController () <AgoraRtcEngineDelegate> {
+    int count;
+}
 @property (weak, nonatomic) IBOutlet UILabel *roomNameLabel;
 @property (weak, nonatomic) IBOutlet UIView *remoteContainerView;
 @property (weak, nonatomic) IBOutlet UIButton *broadcastButton;
@@ -26,6 +31,10 @@
 @property (strong, nonatomic) NSMutableArray<VideoSession *> *videoSessions;
 @property (strong, nonatomic) VideoSession *fullSession;
 @property (strong, nonatomic) VideoViewLayouter *viewLayouter;
+
+@property (strong, nonatomic) NSString *publishUrl;
+@property (strong, nonatomic) AgoraLiveTranscoding *agoraLiveTranscoding;
+@property (strong, nonatomic) NSMutableArray<AgoraLiveTranscodingUser *> *users;
 @end
 
 @implementation LiveRoomViewController
@@ -127,6 +136,7 @@
     [self setIdleTimerActive:YES];
     
     [self.rtcEngine setupLocalVideo:nil];
+    [self.rtcEngine removePublishStreamUrl:self.publishUrl];
     [self.rtcEngine leaveChannel:nil];
     if (self.isBroadcaster) {
         [self.rtcEngine stopPreview];
@@ -136,6 +146,7 @@
         [session.hostingView removeFromSuperview];
     }
     [self.videoSessions removeAllObjects];
+    [self.users removeAllObjects];
     
     if ([self.delegate respondsToSelector:@selector(liveVCNeedClose:)]) {
         [self.delegate liveVCNeedClose:self];
@@ -248,10 +259,65 @@
     }
 }
 
+- (void)rtcEngine:(AgoraRtcEngineKit *)engine didJoinChannel:(NSString *)channel withUid:(NSUInteger)uid elapsed:(NSInteger)elapsed {
+    
+    // add publish url with transcoding
+    AgoraLiveTranscodingUser *user = [[AgoraLiveTranscodingUser alloc] init];
+    user.uid = uid;
+    user.rect = CGRectMake(5, 5, PublishWidth - 10, PublishHeight - 10);
+    user.alpha = 1.0;
+    user.zOrder = 1;
+    user.audioChannel = 0;
+    
+    self.users = [[NSMutableArray alloc] init];
+    [self.users addObject:user];
+    self.agoraLiveTranscoding = [[AgoraLiveTranscoding alloc] init];
+    self.agoraLiveTranscoding.transcodingUsers = self.users;
+    self.agoraLiveTranscoding.size = CGSizeMake(PublishWidth, PublishHeight);
+    self.agoraLiveTranscoding.videoBitrate = 2000;
+    self.agoraLiveTranscoding.videoFramerate = 15;
+    self.agoraLiveTranscoding.backgroundColor = UIColor.redColor;
+    
+    [self.rtcEngine setLiveTranscoding:self.agoraLiveTranscoding];
+    
+    self.publishUrl = <#Your RTMP Url #>;
+    [self.rtcEngine addPublishStreamUrl:self.publishUrl transcodingEnabled:YES];
+    // add publish url with transcoding
+}
+
 - (void)rtcEngine:(AgoraRtcEngineKit *)engine didJoinedOfUid:(NSUInteger)uid elapsed:(NSInteger)elapsed {
     VideoSession *userSession = [self videoSessionOfUid:uid];
     [self.rtcEngine setupRemoteVideo:userSession.canvas];
+    
+    // update publish transcoding
+    if (count < 1) {
+        AgoraLiveTranscodingUser *user = [[AgoraLiveTranscodingUser alloc] init];
+        user.uid = uid;
+        user.rect = CGRectMake(PublishWidth / 2 + 5, 5, PublishWidth / 2 - 10, PublishHeight - 10);
+        user.alpha = 1.0;
+        user.zOrder = 0;
+        user.audioChannel = 0;
+        
+        self.users[0].rect = CGRectMake(5, 5, PublishWidth / 2 - 10, PublishHeight - 10);
+        [self.users addObject:user];
+        
+        self.agoraLiveTranscoding.transcodingUsers = self.users;
+        [self.rtcEngine setLiveTranscoding:self.agoraLiveTranscoding];
+        count = 1;
+    }
+    // update publish transcoding
 }
+
+// publish call back
+- (void)rtcEngine:(AgoraRtcEngineKit *)engine streamPublishedWithUrl:(NSString *)url errorCode:(AgoraErrorCode)errorCode {
+    NSLog(@"Stream Published With Url: %@", url);
+    NSLog(@"error %ld", (long)errorCode);
+}
+
+- (void)rtcEngine:(AgoraRtcEngineKit *)engine streamUnpublishedWithUrl:(NSString *)url {
+    NSLog(@"Stream Unpublished With Url: %@", url);
+}
+// publish call back
 
 - (void)rtcEngine:(AgoraRtcEngineKit *)engine firstLocalVideoFrameWithSize:(CGSize)size elapsed:(NSInteger)elapsed {
     if (self.videoSessions.count) {
@@ -276,5 +342,18 @@
             self.fullSession = nil;
         }
     }
+    
+    // update publish transcoding
+    for (AgoraLiveTranscodingUser *user in self.users) {
+        if (user.uid == uid) {
+            [self.users removeObject:user];
+            self.users[0].rect = CGRectMake(5, 5, PublishWidth - 10, PublishHeight - 10);
+            
+            self.agoraLiveTranscoding.transcodingUsers = self.users;
+            [self.rtcEngine setLiveTranscoding:self.agoraLiveTranscoding];
+            count = 0;
+        }
+    }
+    // update publish transcoding
 }
 @end
