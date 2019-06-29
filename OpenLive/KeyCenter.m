@@ -10,6 +10,11 @@
 
 @implementation KeyCenter
 + (NSString *)AppId {
-    return <#Your app id#>;
+    return @"请填写你们的appid";
+}
+
+// assign token to nil if you have not enabled app certificate
++ (NSString *)Token {
+    return @"";
 }
 @end
