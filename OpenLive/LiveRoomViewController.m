@@ -314,7 +314,7 @@ int count;
     [self.rtcEngine setChannelProfile:AgoraChannelProfileLiveBroadcasting];
     
     // Warning: only enable dual stream mode if there will be more than one broadcaster in the channel
-    [self.rtcEngine enableDualStreamMode:YES];
+//    [self.rtcEngine enableDualStreamMode:YES];
     
     [self.rtcEngine enableVideo];
     
@@ -348,33 +348,31 @@ int count;
 }
 
 //add by longxin
-
-- (void)rtcEngine:(AgoraRtcEngineKit *)engine didJoinChannel:(NSString *)channel withUid:(NSUInteger)uid elapsed:(NSInteger)elapsed {
-    
-    // add publish url with transcoding
+- (void)rtcEngine:(AgoraRtcEngineKit *_Nonnull)engine didJoinChannel:(NSString *_Nonnull)channel withUid:(NSUInteger)uid elapsed:(NSInteger)elapsed {
+    NSLog(@"---didJoinChannel---uid:%lu",uid);
+//不转码推流
+    [self.rtcEngine addPublishStreamUrl:@"请填写推流地址" transcodingEnabled:NO];
+//推转码流
     AgoraLiveTranscodingUser *user = [[AgoraLiveTranscodingUser alloc] init];
     user.uid = uid;
     user.rect = CGRectMake(5, 5, PublishWidth - 10, PublishHeight - 10);
     user.alpha = 1.0;
     user.zOrder = 1;
     user.audioChannel = 0;
-    
     self.users = [[NSMutableArray alloc] init];
     [self.users addObject:user];
     self.agoraLiveTranscoding = [[AgoraLiveTranscoding alloc] init];
     self.agoraLiveTranscoding.transcodingUsers = self.users;
     self.agoraLiveTranscoding.size = CGSizeMake(PublishWidth, PublishHeight);
-    self.agoraLiveTranscoding.videoBitrate = 2000;
+    self.agoraLiveTranscoding.videoBitrate = 2800;
     self.agoraLiveTranscoding.videoFramerate = 15;
     self.agoraLiveTranscoding.backgroundColor = UIColor.redColor;
-    
     [self.rtcEngine setLiveTranscoding:self.agoraLiveTranscoding];
-    
-    self.publishUrl = @"rtmp://填你们的推流地址";
+    self.publishUrl = @"请填写推流地址";
     [self.rtcEngine addPublishStreamUrl:self.publishUrl transcodingEnabled:YES];
-    // add publish url with transcoding
+//推转码流
 }
-//add by longxin
+
 - (void)rtcEngine:(AgoraRtcEngineKit *)engine didJoinedOfUid:(NSUInteger)uid elapsed:(NSInteger)elapsed {
     VideoSession *userSession = [self videoSessionOfUid:uid];
     [self.rtcEngine setupRemoteVideo:userSession.canvas];
@@ -398,7 +396,7 @@ int count;
     // update publish transcoding
 	//add by longxin
 }
-	//add by longxin
+//add by longxin
 - (void)rtcEngine:(AgoraRtcEngineKit *)engine streamPublishedWithUrl:(NSString *)url errorCode:(AgoraErrorCode)errorCode {
     NSLog(@"Stream Published With Url: %@", url);
     NSLog(@"error %ld", (long)errorCode);
@@ -407,7 +405,7 @@ int count;
 - (void)rtcEngine:(AgoraRtcEngineKit *)engine streamUnpublishedWithUrl:(NSString *)url {
     NSLog(@"Stream Unpublished With Url: %@", url);
 }
-		//add by longxin
+//add by longxin
 
 - (void)rtcEngine:(AgoraRtcEngineKit *)engine firstLocalVideoFrameWithSize:(CGSize)size elapsed:(NSInteger)elapsed {
     if (self.videoSessions.count) {

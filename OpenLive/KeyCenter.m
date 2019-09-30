@@ -10,11 +10,11 @@
 
 @implementation KeyCenter
 + (NSString *)AppId {
-    return @"请填写你们的appid";
+    return @"请填写贵司申请的声网的appid";
 }
 
 // assign token to nil if you have not enabled app certificate
 + (NSString *)Token {
-    return @"";
+    return @"如果appid开通了token，必须生成token加入频道";
 }
 @end
